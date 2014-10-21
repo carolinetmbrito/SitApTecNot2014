@@ -24,3 +24,25 @@ body {
     .paisagem{display: block;}
     .retrato{display: none;}
 }
+
+@media screen and (min-width: 1280px){
+    section{display: block; margin: 0 auto; width: 1230px; padding-left: 50px;
+            /*Borda só para deug*/ border: 2px white solid}
+    figure{width: 390px; height: 300px; float: left; border: 2px white solid; margin: 5px;}
+}
+@media screen and (min-width: 800px) and (max-width: 1279px){
+    section{display: block; margin: 0 auto; width: 800px; padding-left: 50px;
+            /*Borda só para deug*/ border: 2px chartreuse dashed}
+    figure{width: 350px; height: 280px; float: left; border: 2px chartreuse dashed; margin: 5px;}
+}
+@media screen and (max-width: 799px){
+    section{display: block; margin: 0 auto; width: 640px; padding-left: 50px;
+            /*Borda só para deug*/ border: 2px yellow dotted}
+    figure{width: 600px; height: auto; float: left; border: 2px yellow dotted; margin: 5px;}
+}
+.fim { clear: both;/*Limpar a flotuação*/}
+
+img{/*Responsivo*/width: 90%;/*Refere-se a figure*/ height: 90%; display: block; margin: 5% auto;}
+
+figcaption{background-color: rgba(240,240,240,0.4); height: 30px; position: relative;
+           bottom: 50px; text-align: center; width: 90%; margin: 0 auto;}

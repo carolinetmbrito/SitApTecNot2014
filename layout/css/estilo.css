@@ -1,0 +1,26 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21/10/2014, 19:28:29
+    Author     : Carol e Fernando
+*/
+
+body {
+    background-color: black;
+    color: white;
+}
+
+@media screen and (orientation: portrait){
+    /*Retrato - Vertical*/
+    .paisagem{display: none;}
+    .retrato{display: block;}
+}
+
+@media screen and (orientation: landscape){
+    /*Paisagem - Horizontal*/
+    .paisagem{display: block;}
+    .retrato{display: none;}
+}

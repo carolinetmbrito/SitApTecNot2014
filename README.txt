@@ -1,18 +1,42 @@
-SitApTecNot2014
-===============
+Prologue by HTML5 UP
+html5up.net | @n33co
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
-Situação de aprendizagem da 4ª fase TecNinfor
+
+This is Prologue, a simple, single page responsive site template. It features a
+clean, minimalistic design and a sticky sidebar with navigation-linked scrolling.
+	
+Demo content images* are courtesy of the ridiculously talented Felicia Simion. Check out
+more of her amazing work over at deviantART:
+
+http://ineedchemicalx.deviantart.com/
+
+(* = Not included! Only meant for use with my own on-site demo, so please do NOT download
+and/or use any of Felicia's work without her explicit permission!)
+
+Demo banner images* courtesy of Unsplash, a radtastic collection of CC0 (public domain)
+images you can use for pretty much whatever.
+
+(* = Not included)
+
+AJ
+n33.co @n33co dribbble.com/n33
 
 
-CONTEXTUALIZAÇÃO: 
-Com o advento do acesso à internet através de diferentes dispositivos, tais como Smartphones, Tablets, Notebooks, Smart TVs e outros, a informação deve estar disponível e adaptada para todos esses meios, porém, se não forem utilizadas as técnicas adequadas, a visualização do conteúdo pode ficar comprometida.   
-Isso acontece com frequência nos websites de empresas que não possuem técnicos capacitados e qualificados para lidarem com as novidades do mercado.  
-Novos padrões web foram criados e as linguagens de programação foram atualizadas para atender a essas necessidades, podendo citar a HTML5, CSS3, Javascript dentre outras. Cabe aos profissionais se capacitarem nessas mudanças de cenário.  
-A empresa “Contêxtil LTDA” deseja reformular seu portal web e se adequar a essa nova realidade e para isso deseja contratar uma equipe especializada nos novos padrões web.
-]
+Credits:
 
-DESAFIO 
-A equipe contratada pela Contêxtil Ltda deverá pesquisar esses novos padrões de acessibilidade web para os diferentes meios e desenvolver um Sistema Gerenciador de Conteúdo para portal responsivo, ou seja, adaptável.
+	Demo Images:
+		Felicia Simion (ineedchemicalx.deviantart.com)
+		Unsplash (unsplash.com)
+		
+	Icons:
+		Font Awesome (fortawesome.github.com/Font-Awesome)
 
-RESULTAD/OS/ENTREGAS ESPERADOS
- Portal hospedado em um servidor on-line.  Código fonte disponibilizado no Github.  Relatório de testes do Portal.   
+	Other
+		jQuery (jquery.com)
+		html5shiv.js (@afarkas @jdalton @jon_neal @rem)
+		CSS3 Pie (css3pie.com)
+		background-size polyfill (github.com/louisremi)
+		jquery.scrolly (n33.co)
+		jquery.scrollzer (n33.co)
+		skel (n33.co)

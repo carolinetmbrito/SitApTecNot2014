@@ -19,6 +19,28 @@
         </div>
     </section>
 
+    <section id="logar" class="four">
+        <div class="container">
+            <header>
+                <h2>Faça seu Login</h2>
+            </header>
+            <?php echo form_open('usuarios/logar', 'id="form-logar"'); ?>
+            <div class="row half">
+                <div class="6u"><input type="text" name="email" placeholder="E-mail"/>
+                    <div class="error"><?php echo form_error('email'); ?></div></div>
+
+                <div class="6u"><input type="password" name="senha" placeholder="Senha"/>
+                    <div class="error"><?php echo form_error('senha'); ?></div></div>
+            </div>
+            <div class="row">
+                <div class="12u">
+                    <input type="submit" name="logar" value="Fezer Login"/>
+                </div>
+            </div>
+            <?php echo form_close(); ?>
+        </div>
+    </section>
+
     <!-- Portfolio -->
     <section id="portfolio" class="two">
         <div class="container">
@@ -181,10 +203,10 @@
 
 
             <div class="row">
-                    <div class="12u">
-                        <input type="submit" name="cadastrar" value="Cadastrar"/>
-                    </div>
+                <div class="12u">
+                    <input type="submit" name="cadastrar" value="Cadastrar"/>
                 </div>
+            </div>
 
 
             <?php echo form_close(); ?>
@@ -192,11 +214,11 @@
             <!-- Lista as Pessoas Cadastradas -->
             <br />
             <div class="row">
-                    <?php foreach ($usuarios as $usuario): ?>
-                
+                <?php foreach ($usuarios as $usuario): ?>
+
                     <article class="item 4u">
                         <a href="#" class="image fit">
-                        <img src="<?php echo base_url("assets/images/{$usuario->foto}"); ?>" />
+                            <img src="<?php echo base_url("assets/images/{$usuario->foto}"); ?>" />
                         </a>
                         <header>
                             <h3><a title="Editar" href="<?php echo base_url() . 'usuarios/editar/' . $usuario->idusuario; ?>"><?php echo $usuario->nome; ?></a></h3>
@@ -223,9 +245,9 @@
                             <p><?php echo $usuario->celular; ?></p>
                         -->
                     </article>
-                    <?php endforeach ?>
-                </div>
-           
+                <?php endforeach ?>
+            </div>
+
             <!-- Fim Lista -->
 
 

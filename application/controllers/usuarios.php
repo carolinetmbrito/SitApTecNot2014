@@ -23,7 +23,7 @@ class Usuarios extends CI_Controller {
          */
         //$this->load->view('usuarios_view.php', $data);
         $this->load->view('home-header');
-        $this->load->view('home',$data);
+        $this->load->view('home', $data);
         $this->load->view('home-footer');
     }
 
@@ -68,7 +68,7 @@ class Usuarios extends CI_Controller {
             //Datas
             $data['dtcriacao'] = date('Y-m-d H:i:s');
             $data['dtnascimento'] = $this
-             ->converterDataParaMySql($data['dtnascimento']);
+                    ->converterDataParaMySql($data['dtnascimento']);
 
             /* Chama a função inserir do modelo */
             if ($this->usuarios_model->inserir($data)) {
@@ -88,8 +88,7 @@ class Usuarios extends CI_Controller {
         $data['dados_usuario'] = $this->usuarios_model->editar($id);
 
         //Convertendo a data para o padrão brasileiro
-        $data['dados_usuario'][0]->dtNascimento = 
-        $this->converteDataParaPadraoBrasileiro($data['dados_usuario'][0]->dtNascimento);
+        $data['dados_usuario'][0]->dtNascimento = $this->converteDataParaPadraoBrasileiro($data['dados_usuario'][0]->dtNascimento);
 
         /**
          * debug is on the table
@@ -151,13 +150,13 @@ class Usuarios extends CI_Controller {
             $data['cep'] = $this->input->post('cep');
             $data['telefone'] = $this->input->post('telefone');
             $data['celular'] = $this->input->post('celular');
-            
+
             //Pegando a data de atualização
             $data['dtatualizacao'] = date('Y-m-d H:i:s');
-            
+
             //Convertendo a data para MySQL
             $data['dtnascimento'] = $this
-             ->converterDataParaMySql($data['dtnascimento']);
+                    ->converterDataParaMySql($data['dtnascimento']);
 
             /* Executa a função atualizar do modelo passando como parâmetro os dados obtidos do formulário */
             if ($this->usuarios_model->atualizar($data)) {
@@ -206,6 +205,30 @@ class Usuarios extends CI_Controller {
         $data = array_reverse($data);
         $dataBrasileira = implode('/', $data);
         return $dataBrasileira;
+    }
+
+    function logar() {
+        // Inicia a SESSAO
+        @session_start();
+        // Verifica se todas as sessÃµes estão setadas 
+        // (Estas sees sÃ£o setadas na hora do login, 
+        // também postei um arquivo de login aqui no site)
+        $con = mysqli_connect("127.0.0.1:3307", "root", "digite a senha do banco aqui")
+                or die("Sem conexão com o servidor");
+        $select = mysqli_select_db("sitap")
+                or die("Sem acesso ao DB, Entre em contato com o Administrador");
+        $result = mysqli_query("SELECT * FROM `USUARIO` WHERE `EMAIL` = '$data' AND `SENHA`= '$data'");
+        if (mysqli_num_rows($result) > 0) {
+            $_SESSION['email'] = $data;
+            $_SESSION['senha'] = $data;
+            echo 'Deu Certo';
+            header('location:');
+        } else {
+            unset($_SESSION['email']);
+            unset($_SESSION['senha']);
+            echo 'Nao deu Certo';
+            header('location: ');
+        }
     }
 
 }

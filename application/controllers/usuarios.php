@@ -7,14 +7,24 @@ class Usuarios extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        /* Carrega o modelo */
         $this->load->model('usuarios_model');
+        //Definir o timezone - Fuso Horário
+        date_default_timezone_set('America/Sao_Paulo');
     }
 
     function index() {
-        $data['titulo'] = "CRUD com CodeIgniter | Cadastro de Usuarios";
+        $data['titulo'] = "CRUD com CodeIgniter | Cadastro de Usuários";
+        /**
+         * Lista todos os registros da tabela usuarios
+         */
         $data['usuarios'] = $this->usuarios_model->listar();
-        $this->load->view('usuarios_view.php', $data);
+        /**
+         * Carrega a view
+         */
+        //$this->load->view('usuarios_view.php', $data);
+        $this->load->view('home-header');
+        $this->load->view('home',$data);
+        $this->load->view('home-footer');
     }
 
     public function info() {
@@ -38,11 +48,27 @@ class Usuarios extends CI_Controller {
         if ($this->form_validation->run() === FALSE) {
             /* Chama a função index do controlador */
             $this->index();
+            //base_url('index.php#cadastro');
             /* Senão, caso sucesso na validação... */
         } else {
             /* Recebe os dados do formulário (visão) */
             $data['nome'] = $this->input->post('nome');
             $data['email'] = $this->input->post('email');
+            $data['senha'] = $this->input->post('senha');
+            $data['dtnascimento'] = $this->input->post('dtnascimento');
+            $data['foto'] = $this->input->post('foto');
+            $data['cidade'] = $this->input->post('cidade');
+            $data['estado'] = $this->input->post('estado');
+            $data['bairro'] = $this->input->post('bairro');
+            $data['endereco'] = $this->input->post('endereco');
+            $data['cep'] = $this->input->post('cep');
+            $data['telefone'] = $this->input->post('telefone');
+            $data['celular'] = $this->input->post('celular');
+
+            //Datas
+            $data['dtcriacao'] = date('Y-m-d H:i:s');
+            $data['dtnascimento'] = $this
+             ->converterDataParaMySql($data['dtnascimento']);
 
             /* Chama a função inserir do modelo */
             if ($this->usuarios_model->inserir($data)) {
@@ -53,27 +79,33 @@ class Usuarios extends CI_Controller {
         }
     }
 
-    function editar($idusuario) {
+    function editar($id) {
 
         /* Aqui vamos definir o título da página de edição */
         $data['titulo'] = "CRUD com CodeIgniter | Editar Usuario";
 
-        /* Carrega o modelo */
-        $this->load->model('usuarios_model');
+        /* Busca os dados da usuario que será editada (id) */
+        $data['dados_usuario'] = $this->usuarios_model->editar($id);
 
-        /* Busca os dados do usuarios que será editada (id) */
-        $data['dados_usuario'] = $this->usuarios_model->editar($idusuario);
+        //Convertendo a data para o padrão brasileiro
+        $data['dados_usuario'][0]->dtNascimento = 
+        $this->converteDataParaPadraoBrasileiro($data['dados_usuario'][0]->dtNascimento);
 
         /**
          * debug is on the table
          */
-        /*echo "<pre>";
-        var_dump($data);
-        echo "</pre>";
-        die();*/
+        /*
+          echo "<pre>";
+          var_dump($data);
+          echo "</pre>";
+          die();
+         * 
+         */
 
-        /* Carrega a página de edição com os dados do usuario */
-        $this->load->view('usuarios_edit', $data);
+        /* Carrega a página de edição com os dados da usuario */
+        $this->load->view('home-header');
+        $this->load->view('home-edit', $data);
+        $this->load->view('home-footer');
     }
 
     function atualizar() {
@@ -109,6 +141,23 @@ class Usuarios extends CI_Controller {
             $data['idusuario'] = $this->input->post('idusuario');
             $data['nome'] = ucwords($this->input->post('nome'));
             $data['email'] = strtolower($this->input->post('email'));
+            $data['senha'] = $this->input->post('senha');
+            $data['dtnascimento'] = $this->input->post('dtnascimento');
+            $data['foto'] = $this->input->post('foto');
+            $data['cidade'] = $this->input->post('cidade');
+            $data['estado'] = $this->input->post('estado');
+            $data['bairro'] = $this->input->post('bairro');
+            $data['endereco'] = $this->input->post('endereco');
+            $data['cep'] = $this->input->post('cep');
+            $data['telefone'] = $this->input->post('telefone');
+            $data['celular'] = $this->input->post('celular');
+            
+            //Pegando a data de atualização
+            $data['dtatualizacao'] = date('Y-m-d H:i:s');
+            
+            //Convertendo a data para MySQL
+            $data['dtnascimento'] = $this
+             ->converterDataParaMySql($data['dtnascimento']);
 
             /* Executa a função atualizar do modelo passando como parâmetro os dados obtidos do formulário */
             if ($this->usuarios_model->atualizar($data)) {
@@ -123,6 +172,7 @@ class Usuarios extends CI_Controller {
 
     function deletar($idusuario) {
 
+        /* Executa a função deletar do modelo passando como parâmetro o id da usuario */
         if ($this->usuarios_model->deletar($idusuario)) {
             /* Caso sucesso ao atualizar, recarrega a página principal */
             redirect('usuarios');
@@ -130,6 +180,32 @@ class Usuarios extends CI_Controller {
             /* Senão exibe a mensagem de erro */
             log_message('error', 'Erro ao deletar o usuario.');
         }
+    }
+
+    /**
+     * Converte uma data padrão brasileiro DD/MM/AAAA
+     * para o padrão MySQL AAAA-MM-DD 
+     * @param date $databrasileira
+     * @return date
+     */
+    private function converterDataParaMySql($databrasileira) {
+        $data = explode('/', $databrasileira);
+        $data = array_reverse($data);
+        $dataMySQL = implode('-', $data);
+        return $dataMySQL;
+    }
+
+    /**
+     * Converte uma data padrão MySQL AAAA-MM-DD
+     * para o padrão brasileiro DD/MM/AAAA
+     * @param date $dataMySQL
+     * @return date
+     */
+    private function converteDataParaPadraoBrasileiro($dataMySQL) {
+        $data = explode('-', $dataMySQL);
+        $data = array_reverse($data);
+        $dataBrasileira = implode('/', $data);
+        return $dataBrasileira;
     }
 
 }

@@ -24,12 +24,13 @@
             <header>
                 <h2>Faça seu Login</h2>
             </header>
-            <?php echo form_open('usuarios/logar', 'id="form-logar"'); ?>
+            <?php echo '<div class="alert alert-error">'.validation_errors().'</div>'; ?>
+            <?php echo form_open('verifylogin'); ?>
             <div class="row half">
-                <div class="6u"><input type="text" name="email" placeholder="E-mail"/>
+                <div class="6u"><input type="text" name="email" placeholder="E-mail" required="true"/>
                     <div class="error"><?php echo form_error('email'); ?></div></div>
 
-                <div class="6u"><input type="password" name="senha" placeholder="Senha"/>
+                <div class="6u"><input type="password" name="senha" placeholder="Senha" required="true"/>
                     <div class="error"><?php echo form_error('senha'); ?></div></div>
             </div>
             <div class="row">

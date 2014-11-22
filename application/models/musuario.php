@@ -1,25 +1,21 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-Class Musuario extends CI_Model
-{
- function login($nome, $senha)
- {
-   $this -> db -> select('id, email, senha');
-   $this -> db -> from('usuario');
-   $this -> db -> where('email', $email);
-   $this -> db -> where('senha', ($senha));
-   $this -> db -> limit(1);
- 
-   $query = $this -> db -> get();
- 
-   if($query -> num_rows() == 1)
-   {
-     return $query->result();
-   }
-   else
-   {
-     return false;
-   }
- }
+<?php
+Class Musuario extends CI_Model {
+
+    function login($email, $senha) {
+        $this->db->select('id, email, senha');
+        $this->db->from('usuario');
+        $this->db->where('email', ($email));
+        $this->db->where('senha', ($senha));
+        $this->db->limit(1);
+        
+        $query = $this->db->get('usuario');
+
+        if ($query->num_rows() == 1) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
 }
 ?>
 <!-- http://www.iluv2code.com/login-with-codeigniter-php.html -->

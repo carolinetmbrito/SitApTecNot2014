@@ -24,7 +24,7 @@
             <header>
                 <h2>Faça seu Login</h2>
             </header>
-            <?php echo '<div class="alert alert-error">'.validation_errors().'</div>'; ?>
+            <?php echo '<div class="alert alert-error">' . validation_errors() . '</div>'; ?>
             <?php echo form_open('verifylogin'); ?>
             <div class="row half">
                 <div class="6u"><input type="text" name="email" placeholder="E-mail" required="true"/>
@@ -35,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="12u">
-                    <input type="submit" name="logar" value="Fezer Login"/>
+                    <input type="submit" name="logar" value="Fazer Login"/>
                 </div>
             </div>
             <?php echo form_close(); ?>
@@ -162,10 +162,15 @@
 
 
             <div class="row half">
-                <div class="12u">
-                    <input type="text" name="foto" placeholder="Foto"/>
+                <div class="3u">
+                    <label>Escolha sua foto</label>
+                </div>
+
+                <div class="9u">
+                    <input type="file" name="foto"/>
                     <div class="error"><?php echo form_error('foto'); ?></div>
                 </div>
+
             </div>
 
 

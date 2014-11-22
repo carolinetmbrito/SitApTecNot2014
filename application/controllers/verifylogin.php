@@ -4,34 +4,34 @@ class VerifyLogin extends CI_Controller {
 
  function __construct(){
    parent::__construct();
-   $this->load->model('musuario','',TRUE);
+   $this->load->model('Musuario','',TRUE);
  }
 
  function index(){
    $this->load->library('form_validation');
-
-   $this->form_validation->set_rules('email', 'E-mail', 'trim|required|xss_clean');
-   $this->form_validation->set_rules('senha', 'Senha',  'trim|required|xss_clean|callback_check_dados');
+   $this->form_validation->set_rules('email', 'E-mail', 'required');
+   $this->form_validation->set_rules('senha', 'Senha',  'callback_check_dados', 'required');
+   
 
    if($this->form_validation->run() == FALSE){
-     $this->load->view('home');
+     $this->load->view();
+     echo 'voce nao conseguiu, voce esta no verifylogin';
    } else {
-     redirect(//'area_restrita',
-             'refresh');
+       echo 'voce conseguiu você está no verifylogin';
+     //redirect(//'area_restrita','refresh');
    }
  }
 
  function check_dados($senha){
    $email = $this->input->post('email');
-   $result = $this->musuario->login($email, $senha);
+   $result = $this->Musuario->login($email, $senha);
 
    if($result){
      $sess_array = array();
      foreach($result as $row){
        $sess_array = array(
-         'id'           => $row->idusuario,
-         'nome'         => $row->nome,
-         'tipo_usuario' => $row->tipo_usuario
+         'id' => $row->idusuario,
+         'email'     => $row->email
        );
        $this->session->set_userdata($sess_array);
      }

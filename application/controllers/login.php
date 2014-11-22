@@ -8,12 +8,13 @@ class Login extends CI_Controller {
 
  function index(){
    $this->load->helper(array('form'));
-   $this->load->view('home');
+   $this->load->view();
+   echo 'nao sei se conseguiu mas vc esta no login';
  }
 
- function logout(){
-   $this->session->sess_destroy();
-   redirect('home', 'refresh');
- }
+ /**function logout(){
+ *  $this->session->sess_destroy();
+ *  redirect('home', 'refresh');
+ *}
+ */
 }
-?>

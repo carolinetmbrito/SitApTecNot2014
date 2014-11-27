@@ -10,7 +10,9 @@ class Usuarios_model extends CI_Model {
     }
 
     function inserir($data) {
-        return $this->db->insert('usuario', $data);
+        
+        $this->db->insert('usuario', $data);
+        return true;
     }
 
     function listar() {

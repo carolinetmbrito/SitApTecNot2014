@@ -107,89 +107,7 @@
             </form>
 
         </div>
-    </section>
-    <!-- Cadastro -->
-    <section id="cadastro" class="four">
-        <div class="container">
-
-            <header>
-                <h2>Cadastro</h2>
-            </header>
-
-            <?php echo form_open('usuarios/inserir', 'id="form-usuarios"'); ?>
-
-            <div class="row half">
-                <div class="6u"><input type="text" name="nome" placeholder="Nome"/>
-                    <div class="error"><?php echo form_error('nome'); ?></div></div>
-
-                <div class="6u"><input type="text" name="email" placeholder="E-mail"/>
-                    <div class="error"><?php echo form_error('email'); ?></div></div>
-            </div>
-
-            <div class="row half">
-                <div class="6u"><input type="password" name="senha" placeholder="Senha"/>
-                    <div class="error"><?php echo form_error('senha'); ?></div></div>
-
-                <div class="6u"><input type="text" name="dtnascimento" placeholder="Data de Nascimento"/>
-                    <div class="error"><?php echo form_error('dtnascimento'); ?></div></div>
-            </div>
-
-
-            <div class="row half">
-                <div class="3u">
-                    <label>Escolha sua foto</label>
-                </div>
-
-                <div class="9u">
-                    <input type="file" name="foto"/>
-                    <div class="error"><?php echo form_error('foto'); ?></div>
-                </div>
-
-            </div>
-
-
-            <div class="row half">
-                <div class="6u"><input type="text" name="cidade" placeholder="Cidade"/>
-                    <div class="error"><?php echo form_error('cidade'); ?></div> </div>
-
-                <div class="6u"> <input type="text" name="estado" placeholder="Estado"/>
-                    <div class="error"><?php echo form_error('estado'); ?></div></div>
-            </div>
-
-
-            <div class="row half">
-                <div class="12u">
-                    <input type="text" name="endereco" placeholder="Endereço"/>
-                    <div class="error"><?php echo form_error('endereco'); ?></div>
-                </div>
-            </div>
-
-
-            <div class="row half">
-                <div class="6u">  <input type="text" name="bairro" placeholder="Bairro"/>
-                    <div class="error"><?php echo form_error('bairro'); ?></div></div>
-
-                <div class="6u">  <input type="text" name="cep" placeholder="CEP"/>
-                    <div class="error"><?php echo form_error('cep'); ?></div></div>
-            </div>
-
-            <div class="row half">
-                <div class="6u"> <input type="text" name="telefone" placeholder="Telefone"/>
-                    <div class="error"><?php echo form_error('telefone'); ?></div> </div>
-
-                <div class="6u"> <input type="text" name="celular" placeholder="Celular"/>
-                    <div class="error"><?php echo form_error('celular'); ?></div> </div>
-            </div>
-
-
-            <div class="row">
-                <div class="12u">
-                    <input type="submit" name="cadastrar" value="Cadastrar"/>
-                </div>
-            </div>
-
-
-            <?php echo form_close(); ?>
+    </section>   
 
             <!-- Lista as Pessoas Cadastradas -->
             <br />
@@ -233,6 +151,3 @@
 
 
         </div>
-    </section>
-
-</div>

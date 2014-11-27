@@ -59,9 +59,11 @@
                     -->
                     <ul>
                         <li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Início</span></a></li>
+                        <li><a href="#login" id="login-link" class="skel-layers-ignoreHref"><span class="icon fa-sing-in">Cadastro</span></a></li>
                         <li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Notícias</span></a></li>
                         <li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contato</span></a></li>
                         <li><a href="#cadastro" id="cadastro-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Cadastro</span></a></li>
+                        
                     </ul>
                 </nav>
 

@@ -100,6 +100,51 @@
                 </div>
             </div>
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <div class="row">
+                <?php foreach ($noticias as $noticia): ?>
+
+                    <article class="item 4u">
+                        <a href="#" class="image fit"><img src="<?php echo base_url('assets/images/pic06.jpg'); ?>" alt="" /></a>
+                        <header>
+                            <h3><a title="Editar" href="<?php echo base_url() . 'noticias/editar/' . $noticia->idnoticia; ?>"><?php echo $noticia->titulo; ?></a></h3>
+                        </header>
+                        
+                            <p><?php echo $noticia->texto; ?></p>
+                        
+                    </article>
+                <?php endforeach ?>
+            </div> 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         </div>
     </section>
     <!-- Contact -->

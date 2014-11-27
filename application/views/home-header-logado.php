@@ -38,7 +38,7 @@
                 <!-- Logo -->
                 <div id="logo">
                     <span class="image avatar48"><img src="<?php echo base_url('assets/images/avatar.jpg'); ?>" alt="" /></span>
-                    <h1 id="title"><?php echo $this->session->userdata('email'); ?></h1>
+                    <h1 id="title"><?php echo $this->session->userdata('nome'); ?></h1>
                     <p>Hyperspace Engineer</p>
                 </div>
 
@@ -60,7 +60,7 @@
                     <ul>
                         <li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Início</span></a></li>
                         <li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Notícias</span></a></li>
-                        <li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contato</span></a></li>
+                        <li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Escrever Nova Notícia</span></a></li>
                         <li><a href="<?php echo base_url().'logoff' ?>" id="cadastro-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Logoff</span></a></li>
                     </ul>
                 </nav>

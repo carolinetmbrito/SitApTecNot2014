@@ -112,14 +112,14 @@
             <!-- Lista as Pessoas Cadastradas -->
             <br />
             <div class="row">
-                <?php foreach ($usuarios as $usuario): ?>
+                <?php foreach ($musuario as $usuario): ?>
 
                     <article class="item 4u">
                         <a href="#" class="image fit">
                             <img src="<?php echo base_url("assets/images/{$usuario->foto}"); ?>" />
                         </a>
                         <header>
-                            <h3><a title="Editar" href="<?php echo base_url() . 'usuarios/editar/' . $usuario->idusuario; ?>"><?php echo $usuario->nome; ?></a></h3>
+                            <h3><a title="Editar" href="<?php echo base_url() . 'musuario/editar/' . $usuario->idusuario; ?>"><?php echo $usuario->nome; ?></a></h3>
                         </header>
                         <!--
                             <p><?php echo $usuario->email; ?></p>

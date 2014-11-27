@@ -1,16 +1,43 @@
 <!-- http://www.codeproject.com/Articles/476944/Create-user-login-with-Codeigniter -->
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 /* Author: Jorge Torres
  * Description: Login model class
  */
-class mnoticia extends CI_Model{
-    function __construct(){
+
+class mnoticia extends CI_Model {
+
+    function __construct() {
         parent::__construct();
     }
-    
-  function inserir($data) {
+
+    function inserir($data) {
         return $this->db->insert('noticia', $data);
     }
+
+    function listar() {
+        $query = $this->db->get('noticia');
+        return $query->result();
+    }
+
+    function editar($idnoticia) {
+        $this->db->where('idnoticia', $idnoticia);
+        $query = $this->db->get('noticia');
+        return $query->result();
+    }
+
+    function atualizar($data) {
+        $this->db->where('idnoticia', $data['idnoticia']);
+        $this->db->set($data);
+        return $this->db->update('noticia');
+    }
+
+    function deletar($idnoticia) {
+        $this->db->where('idnoticia', $idnoticia);
+        return $this->db->delete('noticia');
+    }
+
 }
 ?>
 

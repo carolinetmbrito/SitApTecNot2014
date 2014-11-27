@@ -7,34 +7,24 @@ class Musuario extends CI_Model{
     function __construct(){
         parent::__construct();
     }
-    
     public function login(){
-        // grab user input
         $email = $this->security->xss_clean($this->input->post('email'));
         $senha = $this->security->xss_clean($this->input->post('senha'));
         
-        // Prep the query
         $this->db->where('email', $email);
         $this->db->where('senha', $senha);
         
-        // Run the query
         $query = $this->db->get('usuario');
-        // Let's check if there are any results
-        
-        
-        
         if($query->num_rows == 1)
-        {
-          
-            // If there is a user, then create session data
             
+        {
             
             $row = $query->row();
             
             
             $data = array(
                     'idusuario' => $row->idusuario,
-                    
+                    'nome' => $row->nome,
                     'email' => $row->email,
                     'senha' => $row->senha,
                     'validated' => true
@@ -45,10 +35,37 @@ class Musuario extends CI_Model{
             
             return true;
         }
-        // If the previous process did not validate
-        // then return false.
         return false;
     }
+
+    function inserir($data) {
+        
+        $this->db->insert('usuario', $data);
+        return true;
+    }
+
+    function listar() {
+        $query = $this->db->get('usuario');
+        return $query->result();
+    }
+
+    function editar($idusuario) {
+        $this->db->where('idusuario', $idusuario);
+        $query = $this->db->get('usuario');
+        return $query->result();
+    }
+
+    function atualizar($data) {
+        $this->db->where('idusuario', $data['idusuario']);
+        $this->db->set($data);
+        return $this->db->update('usuario');
+    }
+
+    function deletar($idusuario) {
+        $this->db->where('idusuario', $idusuario);
+        return $this->db->delete('usuario');
+    }
+    
 }
 ?>
 
